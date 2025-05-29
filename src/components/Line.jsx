@@ -1,5 +1,5 @@
 import React from 'react'
-import SignOut from './SighOut'
+import SignOut from './SignOut'
 
 function Line() {
   return (
