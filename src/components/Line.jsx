@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SignOut from './SignOut.jsx';
+import SignOut from './SignOut';
 import { db } from '../firebase.js';
 
 function Line() {
-    const[messages, setMessages] = useState();
+    const[messages, setMessages] = useState([]); //useState([])とすることでmessagesを配列とする
     useEffect(() => {
         db.collection('messages')
         .orderBy('createdAt')
@@ -16,6 +16,16 @@ function Line() {
   return (
     <div>
         <SignOut />
+        <div className="msgs">
+            {messages.map(({id, text, photoURL, uid}) => (
+                <div>
+                    <div key = {id}>
+                        <img stc={photoURL} alt="" />
+                        <p>{text}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
     </div>
   )
 }
