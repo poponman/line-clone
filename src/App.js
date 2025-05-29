@@ -5,7 +5,9 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {auth} from './firebase';
 
 function App() {
-  const user = useAuthState(auth);
+  //hookは[user, loading, error]という配列を返す
+  //[user]とすることでログイン中のユーザー情報のみ取得する
+  const [user] = useAuthState(auth);
   return (
     <div>
       {user ? <Line /> : <SignIn />}
