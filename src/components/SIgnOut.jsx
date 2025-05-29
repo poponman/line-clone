@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import { auth } from '../firebase'
 import React from 'react'
 
-function SIgnOut() {
+function SignOut() {
   return (
     <div>
         <Button onClick={() => auth.signOut()}>
@@ -12,4 +12,4 @@ function SIgnOut() {
   )
 }
 
-export default SIgnOut
+export default SignOut
