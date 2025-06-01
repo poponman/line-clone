@@ -30,7 +30,7 @@ function Line() {
                             uid === auth.currentUser.uid ? 'sent' : 'received' 
                         }`}
                     >
-                        <img stc={photoURL} alt="" />
+                        <img src={photoURL} alt="" />
                         <p>{text}</p>
                     </div>
              
