@@ -10,7 +10,10 @@ function Line() {
         .orderBy('createdAt')
         .limit(50)
         .onSnapshot((snapshot) => {
-            setMessages(snapshot.docs.map((doc) => doc.data()) )
+            setMessages(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+        })));
         });
     },[]);//最初のマウント時のみ読み込み
 
@@ -19,17 +22,17 @@ function Line() {
         <SignOut />
         <div className="msgs">
             {messages.map(({id, text, photoURL, uid}) => (
-                <div>
+              
                     <div key = {id}>
                         <img stc={photoURL} alt="" />
                         <p>{text}</p>
                     </div>
-                </div>
+             
             ))}
         </div>
         <SendMessage />
     </div>
-  )
+  );
 }
 
-export default Line
+export default Line;
