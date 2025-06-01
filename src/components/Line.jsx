@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SignOut from './SignOut';
 import SendMessage from './SendMessage.jsx';
 import { db , auth} from '../firebase.js';
 
 function Line() {
+    const scroll = useRef();
     const[messages, setMessages] = useState([]); //useState([])とすることでmessagesを配列とする
     useEffect(() => {
         db.collection('messages')
@@ -35,7 +36,8 @@ function Line() {
              
             ))}
         </div>
-        <SendMessage />
+        <SendMessage scroll = {scroll}/>
+        <div ref={scroll}></div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import firebase from 'firebase/compat/app';
 import { Input } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-function SendMessage() {
+function SendMessage({scroll}) {
     const[message, setMessage] =useState('');
 
     //eを取得して再ロードを防止
@@ -20,6 +20,7 @@ function SendMessage() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
         setMessage('');
+        scroll.current.scrollIntoView({ behavior: "smooth" });
     }
 
   return (
